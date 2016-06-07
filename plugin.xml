@@ -46,7 +46,7 @@
             </feature>
         </config-file>
 
-        <js-module src="www/ios/statusbar.js" name="iosStatusbar">
+        <js-module src="www/android/statusbar.js" name="androidStatusbar">
             <merges target="window.StatusBar" />
         </js-module>
 
