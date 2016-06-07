@@ -106,6 +106,26 @@ public class StatusBar extends CordovaPlugin {
             return true;
         }
 
+        if ("shownavigation".equals(action)) {
+            this.cordova.getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // SYSTEM_UI_FLAG_FULLSCREEN is available since JellyBean, but we
+                    // use KitKat here to be aligned with "Fullscreen"  preference
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        int uiOptions = window.getDecorView().getSystemUiVisibility();
+                        uiOptions &= ~View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+                        uiOptions &= ~View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+
+                        window.getDecorView().setSystemUiVisibility(uiOptions);
+                    }
+
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                }
+            });
+            return true;
+        }
+
         if ("hide".equals(action)) {
             this.cordova.getActivity().runOnUiThread(new Runnable() {
                 @Override
@@ -122,6 +142,25 @@ public class StatusBar extends CordovaPlugin {
 
                     // CB-11197 We still need to update LayoutParams to force status bar
                     // to be hidden when entering e.g. text fields
+                    window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                }
+            });
+            return true;
+        }
+
+        if ("hidenavigation".equals(action)) {
+            this.cordova.getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // SYSTEM_UI_FLAG_FULLSCREEN is available since JellyBean, but we
+                    // use KitKat here to be aligned with "Fullscreen"  preference
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        int uiOptions = window.getDecorView().getSystemUiVisibility()
+                                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+                        window.getDecorView().setSystemUiVisibility(uiOptions);
+                    }
+
                     window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 }
             });

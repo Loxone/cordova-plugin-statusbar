@@ -45,6 +45,11 @@
                 <param name="onload" value="true" />
             </feature>
         </config-file>
+
+        <js-module src="www/ios/statusbar.js" name="iosStatusbar">
+            <merges target="window.StatusBar" />
+        </js-module>
+
     </platform>
 
     <platform name="browser">
