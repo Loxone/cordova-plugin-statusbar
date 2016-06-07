@@ -308,3 +308,70 @@ Supported Platforms
 - Windows Phone 7
 - Windows Phone 8
 - Windows Phone 8.1
+
+
+StatusBar.hideNavigation
+=================
+
+Hides the navigation bar (soft keys).
+
+    StatusBar.hideNavigation();
+
+Supported Platforms
+-------------------
+
+- Android
+
+
+StatusBar.showNavigation
+=================
+
+Shows the navigation bar (soft keys).
+
+    StatusBar.showNavigation();
+
+Supported Platforms
+-------------------
+
+- Android
+
+
+StatusBar.isNavigationVisible
+=================
+
+Read this property to see if the navigation bar (soft keys) is visible.
+
+    if (StatusBar.isNavigationVisible) {
+    	// do something
+    }
+
+Supported Platforms
+-------------------
+
+- Android
+
+
+StatusBar.showFullScreen
+=================
+
+Shows the app in fullscreen (immersive mode).
+
+    StatusBar.showFullScreen();
+
+Supported Platforms
+-------------------
+
+- Android
+
+
+StatusBar.hideFullScreen
+=================
+
+Leaves fullscreen (immersive mode).
+
+    StatusBar.hideFullScreen();
+
+Supported Platforms
+-------------------
+
+- Android
