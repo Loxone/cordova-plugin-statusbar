@@ -32,10 +32,6 @@
             <engine name="cordova" version=">=3.0.0" />
     </engines>
 
-    <js-module src="www/statusbar.js" name="statusbar">
-        <clobbers target="window.StatusBar" />
-    </js-module>
-
     <platform name="android">
         <source-file src="src/android/StatusBar.java" target-dir="src/org/apache/cordova/statusbar" />
 
@@ -45,6 +41,10 @@
                 <param name="onload" value="true" />
             </feature>
         </config-file>
+        
+        <js-module src="www/statusbar.js" name="statusbar">
+            <clobbers target="window.StatusBar" />
+        </js-module>
 
         <js-module src="www/android/statusbar.js" name="androidStatusbar">
             <merges target="window.StatusBar" />
@@ -53,6 +53,10 @@
     </platform>
 
     <platform name="browser">
+        <js-module src="www/statusbar.js" name="statusbar">
+            <clobbers target="window.StatusBar" />
+        </js-module>
+        
         <js-module src="src/browser/StatusBarProxy.js" name="StatusBarProxy">
             <runs />
         </js-module>
@@ -60,7 +64,6 @@
 
     <!-- ios -->
     <platform name="ios">
-
         <config-file target="config.xml" parent="/*">
             <feature name="StatusBar">
                 <param name="ios-package" value="CDVStatusBar" />
@@ -72,7 +75,10 @@
 
         <header-file src="src/ios/CDVStatusBar.h" />
         <source-file src="src/ios/CDVStatusBar.m" />
-
+        
+        <js-module src="www/statusbar.js" name="statusbar">
+            <clobbers target="window.StatusBar" />
+        </js-module>
     </platform>
 
     <!-- wp7 -->
@@ -83,6 +89,10 @@
             </feature>
         </config-file>
         <source-file src="src/wp/StatusBar.cs" />
+        
+        <js-module src="www/statusbar.js" name="statusbar">
+            <clobbers target="window.StatusBar" />
+        </js-module>
     </platform>
 
     <!-- wp8 -->
@@ -93,10 +103,18 @@
             </feature>
         </config-file>
         <source-file src="src/wp/StatusBar.cs" />
+        
+        <js-module src="www/statusbar.js" name="statusbar">
+            <clobbers target="window.StatusBar" />
+        </js-module>
     </platform>
 
     <!-- windows -->
     <platform name="windows">
+        <js-module src="www/statusbar.js" name="statusbar">
+            <clobbers target="window.StatusBar" />
+        </js-module>
+        
         <js-module src="src/windows/StatusBarProxy.js" name="StatusBarProxy">
             <runs />
         </js-module>
